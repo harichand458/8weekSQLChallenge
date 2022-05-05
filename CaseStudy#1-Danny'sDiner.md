@@ -62,7 +62,7 @@ select distinct
     customer_id,
     product_name
 from ordered_sales where order_rank = 1
-```sql
+```
 
 ***Output***
 
@@ -88,7 +88,7 @@ select
 from dannys_diner.sales inner join dannys_diner.menu on
     sales.product_id = menu.product_id
 group by product_name order by 2 desc limit 1
-```sql
+```
 
 ***Output***
 
