@@ -47,7 +47,7 @@ from dannys_diner.sales group by customer_id
 
 What was the first item from the menu purchased by each customer?
 
-````sql
+```sql
 with ordered_sales as (
     select
         customer_id,
@@ -81,7 +81,7 @@ Customer B ordered curry and customer C ordered ramem.
 
 What is the most purchased item on the menu and how many times was it purchased by all customers?
 
-````sql
+```sql
 select
     product_name,
     count(*)
