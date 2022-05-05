@@ -96,7 +96,6 @@ group by product_name order by 2 desc limit 1
 | ------------ | --------------- |
 | ramen        | 8               |
 
-People really like Danny's Diner ramem!
 
 ---
 **Query #5**
