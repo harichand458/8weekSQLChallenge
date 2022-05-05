@@ -101,3 +101,45 @@ group by product_name order by 2 desc limit 1
 **Query #5**
 
 Which item was the most popular for each customer?
+
+```sql
+with customer_cte as (
+    select
+        customer_id,
+        product_name,
+        count(*) as item_quantity,
+        rank() over (
+            partition by customer_id
+            order by
+                count(*) desc
+        ) as item_rank
+    from
+        dannys_diner.sales
+    inner join dannys_diner.menu on sales.product_id = menu.product_id
+    group by
+        customer_id,
+        product_name
+)
+
+select
+    customer_id,
+    product_name,
+    item_quantity
+from customer_cte where item_rank = 1
+```
+
+***Output***
+
+| customer_id | product_name | purchases |
+| ----------- | ------------ | --------- |
+| A           | ramen        | 3         |
+| B           | ramen        | 2         |
+| B           | curry        | 2         |
+| B           | sushi        | 2         |
+| C           | ramen        | 3         |
+
+
+---
+**Query #6**
+
+Which item was purchased first by the customer after they became a member?
